@@ -43,7 +43,7 @@ $ python searchTweetsByLocation.py
 ![Part 3b output](3b-region.png)
 
 ## Lessons
-Using Tweepy to access the twitter API for basic crawling
+Using Tweepy to access the twitter API for basic crawling.
 Using Twitter APIs:
 * REST APIs
 * Streaming APIs
