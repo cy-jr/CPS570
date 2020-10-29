@@ -49,9 +49,7 @@ def search_tweets_by_keywords_search():
     current_date = date.today()  #"2020-10-25"
     date_since = current_date.strftime("%Y-%m-%d")
     try:
-        tweets = tweepy.Cursor(api.search, q=search_words, lang="en", since=date_since).items(50)
-      
-    
+        tweets = tweepy.Cursor(api.search, q=search_words, lang="en", since=date_since).items(50)  
         for tweet in tweets:
             print(tweet.user.screen_name,":  ",tweet.text)        
             print(tweet.user.location, "\n")
@@ -59,7 +57,7 @@ def search_tweets_by_keywords_search():
         print("\nProgram Stopped!")
 
 def main():
-    print('Using the Seach API:')
+    print('Using the Search API:')
     search_tweets_by_keywords_search()
 
     print('Using the Stream API')

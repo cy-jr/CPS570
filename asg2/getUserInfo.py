@@ -3,33 +3,33 @@
 import const, sys, os
 import tweepy
 from tweepy import TweepError
- 
+
 
 auth = tweepy.OAuthHandler(const.API_KEY, const.API_SECRET_KEY)
 auth.set_access_token(const.ACCESS_TOKEN, const.ACESS_TOKEN_SECRET)
 api = tweepy.API(auth)
 
-def get_user_info(screenName): 
-    
-    
-    try:
-        sname = api.get_user(screenName)
-        sn = [sname.id]
-        users = api.lookup_users(user_ids=sn)    
-    except TweepError:
-        print('Could not find user')
-         
-    
-    for user in users:
-            print("\n Screen name: ", user.screen_name)
-            print('User ID: ', user.id)
-            print('Location: ', user.location)
-            print('User Description: ', user.description)
-            print("The number of Followers: ", user.followers_count)
-            print('The number of friends: ', user.friends_count)
-            print('THe number of tweets: ', user.statuses_count)
-            print('User URL: ', user.url, "\n")
-
+def get_user_info(screenName):
+    try:    
+        try:
+            sname = api.get_user(screenName)
+            sn = [sname.id]
+            users = api.lookup_users(user_ids=sn)    
+        except TweepError:
+            print('Could not find user')
+            
+        
+        for user in users:
+                print("\n Screen name: ", user.screen_name)
+                print('User ID: ', user.id)
+                print('Location: ', user.location)
+                print('User Description: ', user.description)
+                print("The number of Followers: ", user.followers_count)
+                print('The number of friends: ', user.friends_count)
+                print('THe number of tweets: ', user.statuses_count)
+                print('User URL: ', user.url, "\n")
+    except KeyboardInterrupt:
+        print("\n Program stopped!")
 def main():
 
     usernames = []
@@ -49,7 +49,11 @@ def main():
     # print(usernames)
     
     for name in usernames:
-        get_user_info(name)
+        try:
+            get_user_info(name)
+
+        except KeyboardInterrupt:
+            print("\nProgram Stopped!")
 
     print("Done!")
     return

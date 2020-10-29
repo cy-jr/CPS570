@@ -27,22 +27,18 @@ def get_user_connections(screenName):
                     print (i," ", friend.screen_name)
                     i += 1
             except TweepError as error:
-                print(str(error))
-            try: 
-                for friend in tweepy.Cursor(api.friends, user.screen_name).items(20):
-                    print (j," ", friend.screen_name)
-                    j += 1
-            except TweepError as error:
-                print(str(error))
+                print(str(error))           
             print("\n")
         
         for user in users:
-            
-            print("Followers: ", user.followers_count)
-
-            for ff in tweepy.Cursor(api.followers, user.screen_name).items(20):
-                print (" ", ff.screen_name)
-        print("\n")
+            try:
+                print("Followers: ", user.followers_count)
+                for ff in tweepy.Cursor(api.followers, user.screen_name).items(20):
+                    print (j," ", ff.screen_name)
+                    j += 1
+                print("\n")
+            except TweepError as e:
+                print(str(e))
     except KeyboardInterrupt:
         print("\n Program stopped!")
         sys.exit()

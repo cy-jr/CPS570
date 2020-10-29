@@ -15,7 +15,7 @@ class TweetListener(StreamListener):
  
     def __init__(self):
         super().__init__()
-        self.neededTweets = 5 
+        self.neededTweets = 50 
         self.count = 0
     
     def on_data(self,data):
@@ -38,7 +38,7 @@ class TweetListener(StreamListener):
         print(status)
 
 def search_tweets_by_location():
-
+    print("Most recent tweets in the Dayton OH region using the Streaming API: \n")
     twitterStream = Stream(auth, TweetListener(), wait_on_rate_limit = True, wait_on_rate_limit_notify = True)
    
     try: 

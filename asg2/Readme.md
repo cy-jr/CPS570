@@ -19,36 +19,36 @@ Use the followings command to run the code:
 #### 1
 
 ```
-python getUserInfo.py twitterUsers.txt //or any list of users you might have
+ p ython getUserInfo.py twitterUsers.txt //or any list of users you might have
 ```
 
 ### 2
 ```
-python getUserConnections.py twitterUsers.txt
+$ python getUserConnections.py twitterUsers.txt
 ```
 ## 3a
 ```
-python searchTweetsByKeyword.py 
+$ python searchTweetsByKeyword.py 
 ```
 
 ### 3b
 ```
-python searchTweetsByLocation.py 
+$ python searchTweetsByLocation.py 
 ```
 ## Output Sample:
 
-![Part 1 output](screenshot1.png)
-![Part 2 output](screenshot1.png)
-![Part 3a output](screenshot1.png)
-![Part 3b output](screenshot1.png)
+![Part 1 output](1.png)
+![Part 2 output](2-ffs.png)
+![Part 3a output](3-search.png)
+![Part 3b output](3b-region.png)
 
 ## Lessons
+Using Tweepy to access the twitter API for basic crawling
 Using Twitter APIs:
 * REST APIs
 * Streaming APIs
 * Search API
-
-Using Tweepy to access the twitter API for basic crawling 
+ 
 
 
 
