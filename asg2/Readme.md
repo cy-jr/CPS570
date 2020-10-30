@@ -48,6 +48,10 @@ Using Twitter APIs:
 * REST APIs
 * Streaming APIs
 * Search API
+
+## To Do
+Optimise program efficiency and reduce complexity.
+
  
 
 

@@ -4,11 +4,13 @@ import tweepy
 from tweepy import Stream, TweepError
 from tweepy.streaming import StreamListener 
 from datetime import date
+
+# Connect and authenticate to the twitter API
 auth = tweepy.OAuthHandler(const.API_KEY, const.API_SECRET_KEY)
 auth.set_access_token(const.ACCESS_TOKEN, const.ACESS_TOKEN_SECRET)
 api = tweepy.API(auth,wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
-
+# This class inherits from the Tweepy TweetListner class 
 class TweetListener(StreamListener):
     ''' A listener handles tweets received from the stream and can print to stdout'''
  
@@ -36,14 +38,17 @@ class TweetListener(StreamListener):
     def on_error(self, status):
         print(status)
 
+# This method search tweets with the given keywords using the Stream API
 def search_tweets_by_keyword_stream():
+    # an object of the Tweet Listner object class
     twitterStream = Stream(auth, TweetListener(), wait_on_rate_limit = True, wait_on_rate_limit_notify = True)
 
     try: 
-        twitterStream.filter(track=['Ohio','Weather'])
+        twitterStream.filter(track=['Ohio','Weather']) # Streams tweets with the specified key words
     except KeyboardInterrupt:
         print("\n Program stopped!")
 
+# This method search tweets with the given keywords using the Search API
 def search_tweets_by_keywords_search():
     search_words = "Ohio" and "weather"
     current_date = date.today()  #"2020-10-25"

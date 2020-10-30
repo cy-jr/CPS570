@@ -5,20 +5,32 @@ import tweepy
 from tweepy import Stream, TweepError
 from tweepy.streaming import StreamListener 
 from datetime import date
+
+# Connect and authenticate to the twitter API
 auth = tweepy.OAuthHandler(const.API_KEY, const.API_SECRET_KEY)
 auth.set_access_token(const.ACCESS_TOKEN, const.ACESS_TOKEN_SECRET)
 api = tweepy.API(auth,wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
+# this function obtains the friends and followers for a given screen name
 def get_user_connections(screenName):
     try:
         try:
-            sname = api.get_user(screenName)
-            sn = [sname.id]
-            users = api.lookup_users(user_ids=sn)    
+            sname = api.get_user(screenName)    # Uses the given screen name to get the user object 
         except TweepError:
-            print('Could not find user')
+            print('Could not find user screen name')
+            return False
+        sn = [sname.id]     # Gets user id from the user object 
+        try:
+            users = api.lookup_users(user_ids=sn)   # gets user object from the user id 
+        except TweepError as e:
+            print(str(e))
+            print('Could not find user id')
+            return False
+            
         i = 1
         j = 1
+        
+        # obtain the users friends
         for user in users:
             print("User: ", user.screen_name)
             print("Friends: ", user.friends_count)
@@ -30,6 +42,7 @@ def get_user_connections(screenName):
                 print(str(error))           
             print("\n")
         
+        # obtain the user's followers 
         for user in users:
             try:
                 print("Followers: ", user.followers_count)
@@ -46,11 +59,14 @@ def get_user_connections(screenName):
 
 
 def main():
+
+    # Program accepts a file containing list of user screen names
     usernames = []
     if len(sys.argv) < 2:
         print("Error: Insufficient arguments \n Correct Usage: <interpreter> <programname>.py <file_containing_user_names>")
         sys.exit()
     filename = sys.argv[1]
+    # file handler
     try:
         with open(filename) as file:
             for line in file:
@@ -63,8 +79,8 @@ def main():
     # print(usernames)
     
     for name in usernames:
-        get_user_connections(name)
-
+        if(get_user_connections(name) == False): 
+            break
     print("Done!")
     return
 
