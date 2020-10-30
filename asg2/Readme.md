@@ -39,7 +39,8 @@ $ python searchTweetsByLocation.py
 
 ![Part 1 output](1.png)
 ![Part 2 output](2-ffs.png)
-![Part 3a output](3-search.png)
+![Part 3a output](3a-search.png)
+![Part 3a output](3a-stream.png)
 ![Part 3b output](3b-region.png)
 
 ## Lessons
