@@ -4,7 +4,7 @@
 ## Requirements:
 * python 2/3
 * Tweepy
-# Installation:
+## Installation:
 Linux/Mac
 ```
 $ git clone https://github.com/tweepy/tweepy.git
